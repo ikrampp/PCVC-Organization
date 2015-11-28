@@ -8,6 +8,13 @@
 <link href="css/bootstrap-select.css" rel="stylesheet">
 <link rel="stylesheet" href="css/jquery-ui.min.css?v=1.0">
 <link href="css/webuyu-styles.css?v=36.0" rel="stylesheet">
+<link rel="stylesheet" href="css/select2.css?v=1.0">
+<link rel="stylesheet" href="css/select2-bootstrap.css?v=1.0">
+<link rel="stylesheet" href="css/sb-admin-2.css?v=1.0">
+<link rel="stylesheet" href="css/timeline.css?v=1.0">
+<link rel="stylesheet" href="css/metisMenu.min.css?v=1.0">
+<link rel="stylesheet" href="css/jquery.datetimepicker.css">
+
 
 <script src="js/jquery-1.10.2.min.js?v=1.0"/></script>
 <script src="js/jquery-ui.min.js?v=1.0"></script>

@@ -3,62 +3,35 @@
 if(!isset($_SESSION)){
     session_start();
 }
+
+require_once 'controller/sw_login_controller.php';
+
+if(isset($_SESSION["error_info"]))
+{
+	$error_info = $_SESSION["error_info"];
+	$show_failure_message = $error_info["show_failure_message"];
+	if (isset($error_info["failure_message"]))
+	{
+		$failure_message = $error_info["failure_message"];
+	}
+	unset($_SESSION["error_info"]);
+}
+else
+{
+	$sw_login_controller = new SWLoginController();
+	$container = $sw_login_controller->sw_user_login();
+
+	if(isset($admin_session_check_container->sw_user_loggedin) && 
+				($admin_session_check_container->sw_user_loggedin == true))
+	{
+		header("Location: sw_dashboard.php?from_login_page=true");
+	}
+}
 ?>
 
 <html> 
 <head>
-
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/bootstrap-select.css" rel="stylesheet">
-<link rel="stylesheet" href="css/jquery-ui.min.css?v=1.0">
-<link href="css/webuyu-styles.css?v=36.0" rel="stylesheet">
-
-<script src="js/jquery-1.10.2.min.js?v=1.0"/></script>
-<script src="js/jquery-ui.min.js?v=1.0"></script>
-<script src="js/bootstrap.min.js?v=2.0"></script>
-<script src="js/bootstrap-select.js?v=1.0"></script>
-
-<style>
-body {
-  background-color:#043519;
-  -webkit-font-smoothing: antialiased;
-  font: normal 14px Roboto,arial,sans-serif;
-}
-
-.container {
-    padding: 50px;
-    padding-top: 200px;
-    position: middle;
-    width: 100%;
-}
-
-.form-login {
-    background-color: #EDEDED;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 15px;
-    border-color:#d2d2d2;
-    border-width: 5px;
-    box-shadow:0 1px 0 #cfcfcf;
-}
-
-h4 { 
- border:0 solid #fff; 
- border-bottom-width:1px;
- padding-bottom:10px;
- text-align: center;
-}
-
-.form-control {
-    border-radius: 10px;
-}
-
-.wrapper {
-    text-align: center;
-}
-</style>
+<?php include 'inc_head.php';?>
 </head>
  <body style="padding-bottom:0;padding-top:0" class="indexBody">
 	<?php
@@ -92,7 +65,7 @@ h4 {
             <div class="col-md-offset-5 col-md-3">
                 <div class="form-login" width="100%">
                 <h4>Welcome my Social mate !!!</h4>
-                <form name="user_login" id="user_login" action="admin_login_view.php" method="post">
+                <form name="user_login" id="user_login" action="sw_login_view.php" method="post">
                 <input type="text" name="user_name" id="user_name" class="form-control input-sm chat-input" placeholder="username" />
                 </br>
                 <input type="password" name="password" id="password" class="form-control input-sm chat-input" placeholder="password" />
