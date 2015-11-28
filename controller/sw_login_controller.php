@@ -61,7 +61,15 @@ class SWLoginController {
 			$_SESSION['user_name'] = json_encode($sw_user_details->login_username);
 			$_SESSION['password']  = json_encode($sw_user_details->password);
 		}
-
+		else
+		{
+					$soft_refresh_time = 1 * 60 * 60;
+					$cookie_lifetime = $soft_refresh_time;		
+					if(setcookie("admin_name", $sw_user_login_container->admin_name, (time()+$cookie_lifetime)))
+					{
+						$_COOKIE['admin_name'] = $sw_user_login_container->admin_name;
+					}		
+		}
 		return $sw_user_login_container;
 	}
 	
@@ -99,11 +107,7 @@ class SWLoginController {
 		}
 		
 		//Password Validation
-		if(!strcmp($sw_details_info_do->m_password, $login_container->password))
-		{
-				return;
-		}
-		else
+		if(strcmp($sw_details_info_do->m_password, $login_container->password))
 		{
 			$container->show_failure_message = true;
 			//Close the connection
@@ -112,7 +116,7 @@ class SWLoginController {
 		}
 
 		$container->sw_user_loggedin = true;
-		$container->sw_user_name = $sw_details_info_do->m_name;
+		$container->admin_name = $sw_details_info_do->m_name;
 		
 		//everything is fine
 		$mysqli_connection->commit();				
@@ -121,12 +125,4 @@ class SWLoginController {
 		return $container;
 	}	
 }
-
-$container = new stdClass();
-$container->login_username = '1234567890';
-$container->password = 'password';
-
-	$sw_login_controller = new SWLoginController();
-	$container = $sw_login_controller->social_worker_login($container);
-
 ?>

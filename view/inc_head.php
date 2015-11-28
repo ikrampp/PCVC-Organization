@@ -7,7 +7,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-select.css" rel="stylesheet">
 <link rel="stylesheet" href="css/jquery-ui.min.css?v=1.0">
-<link href="css/webuyu-styles.css?v=36.0" rel="stylesheet">
+<link href="css/custom-styles.css?v=36.0" rel="stylesheet">
 <link rel="stylesheet" href="css/select2.css?v=1.0">
 <link rel="stylesheet" href="css/select2-bootstrap.css?v=1.0">
 <link rel="stylesheet" href="css/sb-admin-2.css?v=1.0">
