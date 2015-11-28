@@ -64,14 +64,14 @@ else
         <div class="row">
             <div class="col-md-offset-5 col-md-3">
                 <div class="form-login" width="100%">
-                <h4>Welcome my Social mate !!!</h4>
+                <h4>Welcome to PCVC !!!</h4>
                 <form name="user_login" id="user_login" action="sw_login_view.php" method="post">
                 <input type="text" name="user_name" id="user_name" class="form-control input-sm chat-input" placeholder="username" />
                 </br>
                 <input type="password" name="password" id="password" class="form-control input-sm chat-input" placeholder="password" />
                 </br>
                 <div class="wrapper" width="300px">
-                <p><input type="submit" class="homebuttonFull" title="Custom Order" id="loadCustomOrder1" value="Login"/></p>
+                <p><input type="submit" class="homebuttonFull" title="Login" id="login" value="Login"/></p>
                 </form>
                 </div>
                 </div>
