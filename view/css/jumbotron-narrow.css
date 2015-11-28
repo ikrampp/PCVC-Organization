@@ -1,0 +1,412 @@
+/* GEO - Semibold */
+@font-face {font-family: 'Geogrotesque-SemiBold';src: url('../fonts/webfonts/geo-semibold/eot/style_169898.eot');src: url('../fonts/webfonts/geo-semibold/eot/style_169898.eot?#iefix') format('embedded-opentype'),url('../fonts/webfonts/geo-semibold/woff/style_169898.woff') format('woff'),url('../fonts/webfonts/geo-semibold/ttf/style_169898.ttf') format('truetype'),url('../fonts/webfonts/geo-semibold/svg/style_169898.svg#Geogrotesque-SemiBold') format('svg');}
+
+/* GEO - Medium */
+@font-face {font-family: 'Geogrotesque-Medium';src: url('../fonts/webfonts/geo-medium/eot/1110FC_0.eot');src: url('../fonts/webfonts/geo-medium/eot/1110FC_0.eot?#iefix') format('embedded-opentype'),url('../fonts/webfonts/geo-medium/woff/1110FC_0.woff') format('woff'),url('../fonts/webfonts/geo-medium/ttf/1110FC_0.ttf') format('truetype'),url('webfonts/1110FC_0.svg#wf') format('svg');}
+
+/* GEO - Regular */
+ @font-face {font-family: 'Geogrotesque-Regular';src: url('../fonts/webfonts/geo-regular/eot/11014B_0.eot');src: url('../fonts/webfonts/geo-regular/eot/11014B_0.eot?#iefix') format('embedded-opentype'),url('../fonts/webfonts/geo-regular/woff/11014B_0.woff') format('woff'),url('../fonts/webfonts/geo-regular/ttf/11014B_0.ttf') format('truetype'),url('../fonts/webfonts/geo-regular/svg/11014B_0.svg#wf') format('svg');}
+
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+  //border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  padding-bottom: 19px;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 100%;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  height: auto;
+}
+
+.bannerHeading {
+  margin: 0 0 8px;
+  color: #fff;
+  font: normal 2em Geogrotesque-semibold, Helvetica, Arial, sans-serif;
+  text-shadow: 0 1px 0 #2F4C63;
+  padding-left:20px
+}
+
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+  .right {
+  	text-align:right;
+  }
+  .footer a{
+     color:#eea236;    
+  }
+  .footer a:hover{
+    color:#fff;
+  }
+  .navbar1{
+    /*3399cc*/
+    background-color: #202327;
+    
+    
+    height: auto;
+    width:  100%;
+  }
+  #navbar a {
+     color:#eea236; 
+  }
+  #navbar a:hover {
+    background-color: #fff;
+    color:#555;
+  }
+
+
+
+  #jumbotron1{
+    //background-image: url('../images/banners.png');
+     background-position: left;
+    background-repeat: no-repeat;
+ }
+#barline{
+  padding-bottom: 5px;
+}
+.thumbnail a img.scart{
+  display:inline;
+}
+#theme-create{
+     background-image: url('../images/neworder.png');
+     background-position: right;
+     background-repeat: no-repeat;
+
+     height: 70px;
+     padding: 0;
+     margin: 0;
+
+     background-color: #ffcc00;
+     width: 100%;
+     border-radius: 3px;
+}
+#theme-create h2{
+     padding:0.5em;
+	 color:#fff;
+}
+#theme-create1{
+     background-image: url('../images/custom.png');
+     background-position: right;
+     background-repeat: no-repeat;
+
+     height: 70px;
+     padding: 0;
+     margin: 0;
+
+     background-color: #428bca;
+     width: 100%;
+     border-radius: 3px;
+}
+#theme-create1 h2{
+     padding: 0.5em;
+	 color:#fff;
+}
+#theme-create3{
+     background-image: url('../images/picklist.png');
+     background-position: right;
+     background-repeat: no-repeat;
+
+     height: 70px;
+     padding: 0;
+     margin: 0;
+
+     background-color: #5cb85c;
+     width: 100%;
+     border-radius: 3px;
+}
+#theme-create3 h2{
+     padding:0.5em;
+}
+.carousel-control.left{
+  background: none;
+}
+.carousel-control.right{
+  background: none;
+}
+.jumbotron{
+  padding-top:0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: #000;
+}
+
+.carousel-inner item{
+  
+}
+.form-control{
+  padding: 0;
+  width:auto;
+  height: 30px;
+}
+.img-thumbnail{
+  width: 120px;
+  height: 140px;
+}
+.carousel-inner .item img{
+  display: inline-block;
+}
+.main{
+  background-color: #fff;
+  padding-left: 0px;
+}
+.panel22:hover{
+  background-color: #efefef;
+}
+.container .jumbotron{
+  border-radius: 3;
+}
+img.custom{
+  border: 3px solid #efefef;
+}
+.hoverimage{
+  box-shadow: 1px 1px 2px #888888;
+  border: 3px solid #555;
+}
+.hoverprod{
+  box-shadow: 1px 1px 2px #ffcc00;
+  border: 2px solid #ffcc00;
+}
+
+.hoverprod1{
+  box-shadow: 1px 1px 2px #555;
+  border: 2px solid #ffcc00;
+}
+.hoverprod2{
+  box-shadow: 1px 1px 2px #555;
+  border: 2px solid #ffcc00;
+}
+#subprod ul{
+display: inline;
+}
+#subprod ul li{
+display: inline;
+}
+#subcate,#brandsection,#delivery{
+      background-image: url('../images/page-background.png');
+     background-repeat: repeat;
+     height: auto;
+}
+
+.left{
+  float: left;
+  margin: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.notepad {
+    background: #f6f6f6;
+    box-shadow: 0 1px 4px hsla(0,0%,0%,.25);
+    
+    position: relative;
+    
+    background-image: -webkit-radial-gradient(#e6e6e6 21%, transparent 21%),
+                      -webkit-radial-gradient(hsla(0,0%,0%,.25) 21%, transparent 26%),
+                      -webkit-linear-gradient(top, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,0) 95%,
+                                                   hsla(180,25%,50%,.1) 95%, hsla(180,25%,50%,.1) 100%);
+    background-image: -moz-radial-gradient(#e6e6e6 21%, transparent 21%),
+                      -moz-radial-gradient(#e6e6e6 10%, transparent 12%),
+                      -moz-linear-gradient(top, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,0) 95%,
+                                                   hsla(180,25%,50%,.1) 95%, hsla(180,25%,50%,.1) 100%);
+    background-image: radial-gradient(#e6e6e6 21%, transparent 21%),
+                      radial-gradient(#e6e6e6 10%, transparent 12%), 
+                      linear-gradient(top, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,0) 95%,
+                                                   hsla(180,25%,50%,.1) 95%, hsla(180,25%,50%,.1) 100%);
+    background-position: 6px 6px, 6px 5px, 50% 18px;
+    background-repeat: repeat-y, repeat-y, repeat;
+    background-size: 48px 48px, 48px 48px, 24px 24px;
+    padding: 48px 24px 24px 84px;
+}
+.notepad:after {
+    border-left: 1px solid hsla(0,75%,50%,.2);
+    border-right: 1px solid hsla(0,75%,50%,.2);
+    bottom: 0;
+    content: '';
+    left: 58px;
+    position: absolute;
+    top: 0;
+    width: 2px;
+}
+.notepad:before {
+    bottom: 8px;
+    border-radius: 4px;
+    box-shadow: 0 10px 10px hsla(0,0%,0%,.25);
+    content: '';
+    height: 100px;
+    max-width: 300px;
+    position: absolute;
+    right: 5px;
+    width: 300px;
+    z-index: -10; 
+    -webkit-transform: rotate(2deg);    
+       -moz-transform: rotate(2deg);   
+        -ms-transform: rotate(2deg);   
+         -o-transform: rotate(2deg);
+            transform: rotate(2deg);
+}
+.thumbnail,.img-thumbnail{
+  border-radius: 0;
+}
+.logoheader{
+  margin-bottom: 1.0em;
+}
+p.special-price{
+  font-size:0.9em;
+  font-family: "tahoma";
+  margin-left: 1em;
+}
+p.old-price{
+  font-size:0.9em;
+  font-family: "tahoma";
+  margin-left: 1em;
+}
+p.prodDesc{
+  font-size:1.0em;
+  font-family: "tahoma";
+}
+
+ ul.nav li a {
+     color:#fff; 
+  }
+  ul.nav li a:hover {
+    background-color: #fff;
+	//background-color: #444950;
+    //background: url('../images/uparrow.png');
+    height: auto;
+    color:#f7941d; 
+	
+     
+  }
+.welcomeguest{
+padding-top:0.8em;
+}
+
+
+
+.fa-user:before {
+    content: "?";
+}
+*:before, *:after {
+    box-sizing: border-box;
+}
+
+
+o:before {
+    content: "?";
+}
+.fa-phone-square:before {
+    content: "?";
+}
+.fa-edit:before, .fa-pencil-square-o:before {
+    content: "?";
+}
+
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 44px;
+    padding: 6px 12px;
+    font-size: 18px;
+    line-height: 1.42857;
+    color: #555;
+    background-color: #FFF;
+    background-image: none;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+input {
+    line-height: normal;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0px;
+}
