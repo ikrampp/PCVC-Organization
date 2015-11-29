@@ -135,6 +135,45 @@ class ClientDetailsAccess extends BaseAccess {
 		$query_stmt->close();
 		return $client_details_info_do;
 	}
+	
+	function load_by_client_phone_number($client_details_phone_number) 
+	{
+		$this->m_status = false;
+
+		$query = "SELECT $this->m_fields FROM client_details WHERE phonenumber = ?";
+		if( !($query_stmt = $this->m_db_connection->prepare($query))) {
+			$this->m_status_code = STATUS_PREPARE_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+		if( !$query_stmt->bind_param("s", $client_details_phone_number) ) {
+			$this->m_status_code = STATUS_BIND_PARAM_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+		if( !$query_stmt->execute() ) {
+			$this->m_status_code = STATUS_EXECUTE_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+		if( !$result_set = $query_stmt->get_result() ) {
+			$this->m_status_code = STATUS_GET_RESULT_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+
+		$this->m_status = true;
+		$this->m_status_code = STATUS_FETCH_NO_DATA;
+
+		$client_details_array = array();
+		while($client_details_info_result = $result_set->fetch_assoc()) {
+			$this->m_status_code = STATUS_SUCCESS;
+			// $this->copy_client_details_data_to_client_details_info_do($client_details_info_result, $client_details_info_do);
+			$client_details_array[] = $client_details_info_result;
+		}
+		$query_stmt->close();
+		return $client_details_array;
+	}
 
 	function load_client_details_by_enrolled_name($client_enrolled_by){
 		
