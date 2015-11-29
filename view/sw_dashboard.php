@@ -70,9 +70,9 @@ function invokeForms(selectObj, client_id_str)
 {
 	var selected_val = $('#' + selectObj).val();
 	var target_action = 'client_hospital_followup_form';
-console.log(selected_val);	
+	
 	if(selected_val == "HOSPITAL_FOLLOWUP")
-		target_action = 'client_hospital_follow_up_form';
+		target_action = 'client_follow_up_form';
 	else if(selected_val == "HOSPITAL_DISCHARGE")
 		target_action = 'client_hospital_discharge_form';
 	else if(selected_val == "PHONE_FOLLOWUP")

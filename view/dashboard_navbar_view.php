@@ -18,8 +18,6 @@
 					<a href="sw_dashboard.php" style="color:#2F525B;font-weight:bold;font-size:14px;"><i class="fa fa-search" style="font-size:14px;color:#000;padding:0 10px"></i>Dashboard</a>
 				</li>
 				<li style="color:#337ab7;">
-					<a href="client_follow_up_form.php" style="color:#2F525B;font-weight:bold;font-size:14px"><i class="fa fa-th" style="font-size:14px;color:#000;padding:0 10px"></i>Hospital FollowUp</a>
-
 					<a href="client_intake_form.php" style="color:#2F525B;font-weight:bold;font-size:14px"><i class="fa fa-th" style="font-size:14px;color:#000;padding:0 10px"></i>Add Client</a>
 				</li>
                 <li style="color:#337ab7;">

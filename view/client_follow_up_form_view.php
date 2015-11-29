@@ -57,7 +57,7 @@
 		</li>
 			
 					<li class="buttons">
-			    <input type="hidden" name="form_id" value="1076823" />
+			<input name="client_id" class="element text medium" type="hidden" maxlength="255" value="<?php if(isset($container) && isset($container->next_client_id)) { echo $container->next_client_id; } ?>"/> 
 			    
 				<input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
 		</li>

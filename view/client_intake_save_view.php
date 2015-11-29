@@ -23,5 +23,5 @@ if (isset($_SESSION["error_info"]))
 $controller = new ClientIntakeController();
 $container = $controller->client_intake_details();
 
-header("Location: client_intake_form.php")
+include "client_intake_form.php";
 ?>
