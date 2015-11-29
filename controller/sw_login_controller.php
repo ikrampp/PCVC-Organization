@@ -32,7 +32,9 @@ class SWLoginController {
 			}
 		}
 		else
-			return;
+		{
+			$error_message = $error_message . 'Invalid Username / Password </br>';
+		}
 		
 		$sw_user_login_container = new stdClass;
 		if(empty($error_message))

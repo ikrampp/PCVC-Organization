@@ -24,12 +24,32 @@ if (isset($_SESSION["error_info"]))
 	unset($_SESSION["error_info"]);
 }
 
-$sw_login_controller = new SWLoginController();
-$container = $sw_login_controller->sw_user_login();
-
-if(isset($_SESSION["error_info"]))
+if(!(isset($_COOKIE) && isset($_COOKIE['admin_name'])))
 {
-		header("Location: login_form.php");
+	$sw_login_controller = new SWLoginController();
+	$container = $sw_login_controller->sw_user_login();
+
+	if(isset($_SESSION["error_info"]))
+	{
+			header("Location: login_form.php");
+	}
+}
+
+if (isset($_SESSION["error_info"]))
+{
+	$error_info = $_SESSION["error_info"];
+	
+	if(isset($error_info["show_failure_message"]))
+	{
+		$show_failure_message = $error_info["show_failure_message"];
+	}
+	
+	if(isset($error_info["failure_message"]))
+	{
+		$failure_message = $error_info["failure_message"];
+	}
+	
+	unset($_SESSION["error_info"]);
 }
 
 $controller = new ClientIntakeController();
