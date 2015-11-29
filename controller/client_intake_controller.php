@@ -222,6 +222,53 @@ class ClientIntakeController {
 
 		$container->success = true;
 		return $container;
-	}	
+	}
+	
+	public function create_client_follow_up_details()
+	{
+		$client_form_details = new stdClass;
+		$error_message = "";
+
+		if($_SERVER["REQUEST_METHOD"] != "POST")
+		{
+			echo "Form details are not submitted properly.";
+		}
+
+		if(isset($_POST['client_id']))
+		{
+			$client_form_details->client_id 	= $_POST['client_id'];
+			$client_form_details->client_status = 'FOLLOWUP';
+		}
+		else
+		{
+			$error_message = "Client ID is empty.";
+		}
+				
+		$client_form_details->timestamp 		= date('Y-m-d');
+		$client_form_details->form_json_data	= json_encode($_POST);
+
+		$container = new stdClass;
+		if(empty($error_message))
+		{
+			$container = $this->create_client_form_details($client_form_details);
+		}
+
+		if (!empty($error_message) || isset($container->show_failure_message))
+		{
+			$error_info = array();
+			$error_info["show_failure_message"] = true;
+			
+			if(!empty($error_message))
+			{
+				$container->show_failure_message = true;
+				$error_info["failure_message"] = $error_message;
+			}
+			else
+			{
+				$error_info["failure_message"] = "Failed to create client follow up details";
+			}
+		}
+		return $container;
+	}
 }
 ?>
