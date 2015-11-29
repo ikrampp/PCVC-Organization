@@ -174,8 +174,8 @@ class ClientFormDetailsAccess extends BaseAccess {
 		
 		$this->m_status = false;
 
-		$query = "SELECT $this->m_fields FROM client_form_details";
-echo $query;
+		$query = "SELECT id, c.client_id client_id, c.status status, timestamp, form_json_data, name, address, phonenumber FROM client_form_details c, client_details d where c.client_id = d.client_id ";
+
 		if( !($query_stmt = $this->m_db_connection->prepare($query))) {
 			$this->m_status_code = STATUS_PREPARE_FAILED;
 			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
