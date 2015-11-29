@@ -62,9 +62,19 @@ if (isset($_SESSION["error_info"]))
 <link rel="stylesheet" href="css/sumoselect.css?v=3.0">
 <link rel="stylesheet" href="view.css?v=3.0">
 <script src="view.js"></script>
-<script src="calendar.js"></script>
 <script src="js/jquery.sumoselect.min.js?v=3.0"></script>
+<script>
 
+$(document).ready(function() {
+
+	$("#hospital_discharge_date").datepicker({
+		allowBlank: true,
+		dateFormat: 'dd/mm/yy'
+	});
+	
+});
+
+</script>
 </head>
 
 <body>

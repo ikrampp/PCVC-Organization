@@ -39,5 +39,5 @@ if (isset($_SESSION["error_info"]))
 	unset($_SESSION["error_info"]);
 }
 
-header("Location: client_follow_up_form.php")
+header("Location: sw_dashboard.php")
 ?>

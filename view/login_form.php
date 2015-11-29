@@ -16,7 +16,7 @@ if(isset($_SESSION["error_info"]))
 	}
 	unset($_SESSION["error_info"]);
 }
-else
+else if(isset($_POST) && isset($_POST['password']))
 {
 	$sw_login_controller = new SWLoginController();
 	$container = $sw_login_controller->sw_user_login();

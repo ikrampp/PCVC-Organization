@@ -3,7 +3,7 @@ if(!isset($_SESSION)){
     session_start();
 }
 require_once 'controller/sw_login_controller.php';
-require_once 'controller/client_intake_controller.php';
+require_once 'controller/client_report_controller.php';
 
 // Some redirect has happened and the flow reached here
 // Get the error message to display in this page
@@ -35,6 +35,9 @@ if(!(isset($_COOKIE) && isset($_COOKIE['admin_name'])))
 	}
 }
 
+$controller = new ClientReportController();
+$container = $controller->load_all_client_form_details_for_report();
+
 if (isset($_SESSION["error_info"]))
 {
 	$error_info = $_SESSION["error_info"];
@@ -51,9 +54,6 @@ if (isset($_SESSION["error_info"]))
 	
 	unset($_SESSION["error_info"]);
 }
-
-$controller = new ClientIntakeController();
-$container = $controller->get_next_client_id();
 ?>
 
 <html>
@@ -62,31 +62,11 @@ $container = $controller->get_next_client_id();
 <?php  include 'inc_head.php'; ?>
 
 <link rel="stylesheet" href="css/sumoselect.css?v=3.0">
-<link rel="stylesheet" href="view.css?v=3.0">
-<script src="view.js"></script>
 <script src="js/jquery.sumoselect.min.js?v=3.0"></script>
-<script>
 
-$(document).ready(function() {
+<link rel="stylesheet" href="css/bootstrap-table.min.css">
+<link rel="stylesheet" href="css/bootstrap-editable.css">
 
-	$("#client_date_of_admission").datepicker({
-		allowBlank: true,
-		dateFormat: 'dd/mm/yy'
-	});
-
-	$("#client_dob").datepicker({
-		allowBlank: true,
-		dateFormat: 'dd/mm/yy'
-	});	
-	
-	$("#client_date_of_incident").datepicker({
-		allowBlank: true,
-		dateFormat: 'dd/mm/yy'
-	});		
-	
-});
-
-</script>
 </head>
 
 <body>
@@ -95,7 +75,7 @@ $(document).ready(function() {
 	<div id="page-wrapper">
 	    <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header" style="color:#2B87A2">Client Intake</h3>
+                    <h3 class="page-header" style="color:#2B87A2">All Client Details</h3>
                 </div>
                 <!-- /.col-lg-12 -->
         </div>
@@ -106,10 +86,15 @@ $(document).ready(function() {
 			   <strong><?php echo $failure_message ?></strong>
 			</div>
 		<?php } ?>
-       		
+ 
 		<div class="row">
 			<div class="col-lg-12">
-				<?php include 'client_intake_form_view.php'; ?>
+			<?php if (isset($container) && isset($container->client_form_details_array))
+				{?>
+				        <div id="toolbar"></div>
+				<table id="client_details_form_table" data-show-export="true" data-sortable="true" >
+				</table>
+			<?php	}?>
 			</div>
 		</div>
 	</div>
@@ -119,10 +104,43 @@ $(document).ready(function() {
 <script src="js/locale/bootstrap-table-en-US.js?v=1.0"></script>
 <script src="js/bootstrap-table-editable.js?v=1.0"></script>
 <script src="js/bootstrap-editable.js"></script>
+<?php if (isset($container) && isset($container->client_form_details_array))
+{?>
+<script>
+    var data = <?php echo json_encode($container->client_form_details_array, JSON_PRETTY_PRINT); ?>;
 
-<script src="js/select2.min.js?v=1.0"></script>
-<script src="js/sb-admin-2.js?v=1.0"></script>
-<script src="js/metisMenu.min.js?v=1.0"></script>
-<script src="js/jquery.datetimepicker.js"></script>
+    $(function () {
+        $('#client_details_form_table').bootstrapTable({
+            data: data,
+			pagination: true,
+			pageSize: 20,
+			search: true,
+			sortable: true,
+			toolbar: '#toolbar',
+            columns: [{
+                field: 'id',
+                title: 'Id',
+            }, 
+			{
+                field: 'client_id',
+                title: 'Client Id',
+            },
+			{
+                field: 'status',
+                title: 'Status',
+            }, 
+			{
+                field: 'timestamp',
+                title: 'Date',
+            }
+			// {
+                // field: 'form_json_data',
+                // title: 'Additional Data',
+            // }
+			]
+        });
+    });
+</script>
+<?php } ?>
 </body>
 </html>
