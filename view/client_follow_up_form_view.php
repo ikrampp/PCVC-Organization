@@ -1,6 +1,5 @@
 <div id="form_container">
 	<form id="form_1076823" class="appnitro"  enctype="multipart/form-data" method="post" action="client_follow_up_save_view.php">
-		<input id="client_id" name="client_id" type="hidden" value="1001" />
 					<div class="form_description">
 			<h2>Follow Up After Intake</h2>
 			<p></p>
@@ -57,8 +56,7 @@
 		</li>
 			
 					<li class="buttons">
-			<input name="client_id" class="element text medium" type="hidden" maxlength="255" value="<?php if(isset($container) && isset($container->next_client_id)) { echo $container->next_client_id; } ?>"/> 
-			    
+					<input name="client_id" type="hidden" value="<?php if(isset($_GET) && isset($_GET['client_id'])) { echo $_GET['client_id'];}?>" readonly> 			    
 				<input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
 		</li>
 			</ul>

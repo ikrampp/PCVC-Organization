@@ -21,7 +21,6 @@ class ClientFormDetailsAccess extends BaseAccess {
 						$client_form_details_do->m_form_json_data= $client_form_details_result['form_json_data'];
 	}
 	
-	
 	function load_client_form_details_by_id($client_details_id){
 		
 		$this->m_status = false;
@@ -141,7 +140,6 @@ class ClientFormDetailsAccess extends BaseAccess {
 		return $next_id;
 	}
 	
-	
 	function create_client_form_details($client_form_details_do){
 		$this->m_status = false;
 
@@ -171,5 +169,42 @@ class ClientFormDetailsAccess extends BaseAccess {
 
 		return $this->m_status;
 	}		
+
+	function load_all_client_form_details(){
+		
+		$this->m_status = false;
+
+		$query = "SELECT $this->m_fields FROM client_form_details";
+echo $query;
+		if( !($query_stmt = $this->m_db_connection->prepare($query))) {
+			$this->m_status_code = STATUS_PREPARE_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+		if( !$query_stmt->execute() ) {
+			$this->m_status_code = STATUS_EXECUTE_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+		if( !$result_set = $query_stmt->get_result() ) {
+			$this->m_status_code = STATUS_GET_RESULT_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+
+		$this->m_status = true;
+		$this->m_status_code = STATUS_FETCH_NO_DATA;
+
+		$client_form_details_array = array();
+		while($client_form_details_result = $result_set->fetch_assoc()) {
+
+			$this->m_status_code = STATUS_SUCCESS;
+			$client_form_details_array[] = $client_form_details_result;
+		}
+
+		$query_stmt->close();
+		return $client_form_details_array;
+	}
+
 }
 ?>

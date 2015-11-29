@@ -179,8 +179,7 @@ class ClientIntakeController {
 
 			if(!isset($container->show_failure_message))
 			{
-				$container = $this->create_client_form_details($client_form_details);
-				
+				$container = $this->create_client_form_details($client_form_details);	
 			}
 		}
 		
@@ -443,6 +442,7 @@ class ClientIntakeController {
 	public function create_client_follow_up_details()
 	{
 		$client_form_details = new stdClass;
+		$client_details = new stdClass;
 		$error_message = "";
 
 		if($_SERVER["REQUEST_METHOD"] != "POST")
@@ -452,8 +452,10 @@ class ClientIntakeController {
 
 		if(isset($_POST['client_id']))
 		{
+			$client_details->client_id = $_POST['client_id'];
+			$client_details->client_status = 'HOSPITAL_FOLLOWUP';
 			$client_form_details->client_id 	= $_POST['client_id'];
-			$client_form_details->client_status = 'FOLLOWUP';
+			$client_form_details->client_status = 'HOSPITAL_FOLLOWUP';
 		}
 		else
 		{
@@ -466,7 +468,12 @@ class ClientIntakeController {
 		$container = new stdClass;
 		if(empty($error_message))
 		{
-			$container = $this->create_client_form_details($client_form_details);
+			$container = $this->update_client_details($client_details);
+
+			if(!isset($container->show_failure_message))
+			{
+				$container = $this->create_client_form_details($client_form_details);	
+			}		
 		}
 
 		if (!empty($error_message) || isset($container->show_failure_message))
