@@ -126,6 +126,8 @@ class ClientIntakeController {
 		$container->next_client_id = $next_id;
 		return $container;
 	}
+	
+	
 
 	public function create_client_details($client_details)
 	{

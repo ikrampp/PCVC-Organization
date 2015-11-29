@@ -20,6 +20,41 @@ class ClientDetailsAccess extends BaseAccess {
 						$client_details_info_do->m_enrolled_by= $client_details_info_result['enrolled_by'];
 						$client_details_info_do->m_status= $client_details_info_result['status'];
 	}
+	
+	
+	public function getClientDetails()
+	{
+	
+	     $query = "SELECT $this->m_fields FROM client_details WHERE client_id = ?";
+		
+		if( !($query_stmt = $this->m_db_connection->prepare($query))) {
+			$this->m_status_code = STATUS_PREPARE_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+		if( !$query_stmt->bind_param("i", $client_details_id) ) {
+			$this->m_status_code = STATUS_BIND_PARAM_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+		if( !$query_stmt->execute() ) {
+			$this->m_status_code = STATUS_EXECUTE_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+		if( !$result_set = $query_stmt->get_result() ) {
+			$this->m_status_code = STATUS_GET_RESULT_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+		 
+		 
+	    $client_details_info_result = $result_set->fetch_assoc();
+		
+		echo json_encode($client_details_info_result);
+	
+	
+	}
 
 	function load_by_client_details_id($client_details_id){
 		
