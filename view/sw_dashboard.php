@@ -69,7 +69,7 @@ if (isset($_SESSION["error_info"]))
 function invokeForms(selectObj, client_id_str)
 {
 	var selected_val = $('#' + selectObj).val();
-	var target_action = 'client_hospital_followup_form';
+	var target_action = '404_page_not_found';
 	
 	if(selected_val == "HOSPITAL_FOLLOWUP")
 		target_action = 'client_follow_up_form';
@@ -78,7 +78,9 @@ function invokeForms(selectObj, client_id_str)
 	else if(selected_val == "PHONE_FOLLOWUP")
 		target_action = 'client_phone_followup_form';
 	else if(selected_val == "HOME_VISIT")
-		target_action = 'home_visit_form';
+		target_action = '404_page_not_found';
+	else if(selected_val == "FEEDBACK")
+		target_action = '404_page_not_found';
 		
 	window.location.href = target_action + ".php?client_id=" + client_id_str;
 }
