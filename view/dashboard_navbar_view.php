@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;background-color:#24778E;">
 	<div class="navbar-header" style="background-color:#000;width:250px">
-		<a class="navbar-brand" href="sw_dashboard.php" style="color:#fff">Vidiyal - Dashboard</a>
+		<a class="navbar-brand" href="sw_dashboard.php" style="color:#fff"><img src="images/vidiyal_logo.png"  height="30" width="150"></a>
 	</div>
 	<!-- /.navbar-header -->
 	<?php $admin_name = ((isset($_COOKIE) && (isset($_COOKIE['admin_name']))) ? $_COOKIE['admin_name'] : "Admin") ; ?>

@@ -92,7 +92,7 @@ if (isset($_SESSION["error_info"]))
 			<?php if (isset($container) && isset($container->client_form_details_array))
 				{?>
 				        <div id="toolbar"></div>
-				<table id="client_details_form_table" data-show-export="true" data-sortable="true" >
+				<table id="client_details_form_table" data-show-export="true" data-sortable="true">
 				</table>
 			<?php	}?>
 			</div>
@@ -104,6 +104,8 @@ if (isset($_SESSION["error_info"]))
 <script src="js/locale/bootstrap-table-en-US.js?v=1.0"></script>
 <script src="js/bootstrap-table-editable.js?v=1.0"></script>
 <script src="js/bootstrap-editable.js"></script>
+<script src="js/bootstrap-table-export.js"></script>
+<script src="js/tableExport.js"></script>
 <?php if (isset($container) && isset($container->client_form_details_array))
 {?>
 <script>
@@ -117,26 +119,44 @@ if (isset($_SESSION["error_info"]))
 			search: true,
 			sortable: true,
 			toolbar: '#toolbar',
-            columns: [{
-                field: 'id',
-                title: 'Id',
-            }, 
+			showColumns: true,
+			paginationVAlign: 'top',
+            columns: [
 			{
                 field: 'client_id',
                 title: 'Client Id',
+				sortable: true
+            }, 
+			{
+                field: 'name',
+                title: 'Client Name',
+				sortable: true
             },
+			{
+                field: 'address',
+                title: 'Client Address',
+				sortable: true
+            },
+			{
+                field: 'phonenumber',
+                title: 'Phone Number',
+				sortable: true
+            },			
 			{
                 field: 'status',
                 title: 'Status',
+				sortable: true
             }, 
 			{
                 field: 'timestamp',
                 title: 'Date',
+				sortable: true
+            },
+			{
+                field: 'form_json_data',
+                title: 'Additional Data',
+				visible: false
             }
-			// {
-                // field: 'form_json_data',
-                // title: 'Additional Data',
-            // }
 			]
         });
     });
