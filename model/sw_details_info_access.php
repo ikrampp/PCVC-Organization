@@ -104,5 +104,42 @@ class SocialWorkerDetailsAccess extends BaseAccess {
 		$query_stmt->close();
 		return $sw_details_info_do;
 	}
+	
+	function load_clients_by_sw_phone_number($sw_details_phonenumber) {
+
+		$this->m_status = false;
+
+		$query = "select client_id, name, address, phonenumber, status from client_details where enrolled_by in (select name from social_worker_details where phonenumber = ?)";
+		if( !($query_stmt = $this->m_db_connection->prepare($query))) {
+			$this->m_status_code = STATUS_PREPARE_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+		if( !$query_stmt->bind_param("s", $sw_details_phonenumber) ) {
+			$this->m_status_code = STATUS_BIND_PARAM_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+		if( !$query_stmt->execute() ) {
+			$this->m_status_code = STATUS_EXECUTE_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+		if( !$result_set = $query_stmt->get_result() ) {
+			$this->m_status_code = STATUS_GET_RESULT_FAILED;
+			$error_message = (isset($query_stmt->error)) ? " | Error Message : ". $query_stmt->error : "";
+			return;
+		}
+
+		$this->m_status = true;
+		$this->m_status_code = STATUS_FETCH_NO_DATA;
+
+		$sw_details_info_array = array();
+		while($sw_details_info_result = $result_set->fetch_assoc()) {
+			$sw_details_info_array[] = $sw_details_info_result;
+		}
+		$query_stmt->close();
+		return $sw_details_info_array;
+	}
 }
 ?>
