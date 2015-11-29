@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Vidiyal</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="sw">SW</string>
+    <string name="survivor">Survivor</string>
+    <string name="chat">Chat</string>
+    <string name="help">Help me</string>
+    <string name="inspire">Inspire me</string>
+    <string name="entertain">Entertain me</string>
+
+
+</resources>
