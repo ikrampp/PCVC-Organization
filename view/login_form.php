@@ -24,8 +24,20 @@ else
 	if(isset($admin_session_check_container->sw_user_loggedin) && 
 				($admin_session_check_container->sw_user_loggedin == true))
 	{
-		header("Location: sw_dashboard.php?from_login_page=true");
+		header("Location: sw_dashboard.php");
 	}
+}
+
+
+if(isset($_SESSION["error_info"]))
+{
+	$error_info = $_SESSION["error_info"];
+	$show_failure_message = $error_info["show_failure_message"];
+	if (isset($error_info["failure_message"]))
+	{
+		$failure_message = $error_info["failure_message"];
+	}
+	unset($_SESSION["error_info"]);
 }
 ?>
 
@@ -64,7 +76,7 @@ else
         <div class="row">
             <div class="col-md-offset-5 col-md-3">
                 <div class="form-login" width="100%">
-                <h4>Welcome to PCVC !!!</h4>
+                <h4>Welcome to Vidiyal !!!</h4>
                 <form name="user_login" id="user_login" action="sw_login_view.php" method="post">
                 <input type="text" name="user_name" id="user_name" class="form-control input-sm chat-input" placeholder="username" />
                 </br>
