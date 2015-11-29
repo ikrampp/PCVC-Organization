@@ -167,8 +167,6 @@ class ClientDetailsAccess extends BaseAccess {
 
 		$client_details_array = array();
 		while($client_details_info_result = $result_set->fetch_assoc()) {
-			$this->m_status_code = STATUS_SUCCESS;
-			// $this->copy_client_details_data_to_client_details_info_do($client_details_info_result, $client_details_info_do);
 			$client_details_array[] = $client_details_info_result;
 		}
 		$query_stmt->close();
