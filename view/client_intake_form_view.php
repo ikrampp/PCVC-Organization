@@ -21,7 +21,7 @@
 		</li>		<li id="li_4" >
 		<label class="description" for="element_4">Date of admission </label>
 		<div>
-			<input id="element_4" name="client_date_of_admission" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input type="text" class="element text medium" id="client_date_of_admission" name="client_date_of_admission" readonly value="<?php echo date('d/m/Y')?>">
 		</div> 
 		</li>		<li id="li_5" >
 		<label class="description" for="element_5">Mobile </label>
@@ -38,36 +38,14 @@
 		<div>
 			<textarea id="element_7" name="client_new_address" class="element text medium" cols="50" rows="2" ></textarea>
 		</div> 
-		</li>		<li id="li_8" >
+		</li>		
+		<li id="li_8" >
 		<label class="description" for="element_8">Date of birth </label>
 		<span>
-			<input id="element_8_1" name="client_dob_mm" class="element text" size="2" maxlength="2" value="" type="text"> /
-			<label for="element_8_1">MM</label>
+			<input type="text" class="element text large" id="client_dob" name="client_dob" readonly value="">
 		</span>
-		<span>
-			<input id="element_8_2" name="client_dob_dd" class="element text" size="2" maxlength="2" value="" type="text"> /
-			<label for="element_8_2">DD</label>
-		</span>
-		<span>
-	 		<input id="element_8_3" name="client_dob_yyyy" class="element text" size="4" maxlength="4" value="" type="text">
-			<label for="element_8_3">YYYY</label>
-		</span>
-	
-		<span id="calendar_8">
-			<img id="cal_img_8" class="datepicker" src="calendar.gif" alt="Pick a date.">	
-		</span>
-		<script type="text/javascript">
-			Calendar.setup({
-			inputField	 : "element_8_3",
-			baseField    : "element_8",
-			displayArea  : "calendar_8",
-			button		 : "cal_img_8",
-			ifFormat	 : "%B %e, %Y",
-			onSelect	 : selectDate
-			});
-		</script>
-		 
-		</li>		<li id="li_15" >
+		</li>		
+		<li id="li_15" >
 		<label class="description" for="element_15">Educational Qualification </label>
 		<div>
 		<select class="element select medium" id="element_15" name="client_qualifiaction"> 
@@ -162,33 +140,10 @@
 		<li id="li_12" >
 		<label class="description" for="element_12">Date of incident </label>
 		<span>
-			<input id="element_12_1" name="client_incident_date_mm" class="element text" size="2" maxlength="2" value="" type="text"> /
-			<label for="element_12_1">MM</label>
+			<input type="text" class="element text large" id="client_date_of_incident" name="client_date_of_incident" readonly value="">
 		</span>
-		<span>
-			<input id="element_12_2" name="client_incident_date_dd" class="element text" size="2" maxlength="2" value="" type="text"> /
-			<label for="element_12_2">DD</label>
-		</span>
-		<span>
-	 		<input id="element_12_3" name="client_incident_date_yyyy" class="element text" size="4" maxlength="4" value="" type="text">
-			<label for="element_12_3">YYYY</label>
-		</span>
-	
-		<span id="calendar_12">
-			<img id="cal_img_12" class="datepicker" src="calendar.gif" alt="Pick a date.">	
-		</span>
-		<script type="text/javascript">
-			Calendar.setup({
-			inputField	 : "element_12_3",
-			baseField    : "element_12",
-			displayArea  : "calendar_12",
-			button		 : "cal_img_12",
-			ifFormat	 : "%B %e, %Y",
-			onSelect	 : selectDate
-			});
-		</script>
-		 
-		</li>		<li id="li_21" >
+		</li>		
+		<li id="li_21" >
 		<label class="description" for="element_21">Causative Reason</label>
 		<div>
 		<select class="element select medium" id="element_21" name="client_causative_reason"> 
@@ -261,9 +216,10 @@
 		<li id="li_14" >
 		<label class="description" for="element_14">Image of burns </label>
 		<div>
-			<input id="element_14" name="Client_burns_image" class="element file" type="file"/> 
+			<input id="element_14" name="client_burns_image" class="element file" type="file"> 
 		</div>  
-		</li>		<li id="li_25" >
+		</li>		
+		<li id="li_25" >
 		<label class="description" for="element_25">Degrees of burning</label>
 		<span>
 			<input id="element_25_1" name="client_degrees_of_burning" class="element radio" type="radio" value="I" />

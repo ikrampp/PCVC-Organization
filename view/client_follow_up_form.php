@@ -24,12 +24,32 @@ if (isset($_SESSION["error_info"]))
 	unset($_SESSION["error_info"]);
 }
 
-$sw_login_controller = new SWLoginController();
-$container = $sw_login_controller->sw_user_login();
-
-if(isset($_SESSION["error_info"]))
+if(!(isset($_COOKIE) && isset($_COOKIE['admin_name'])))
 {
-		header("Location: login_form.php");
+	$sw_login_controller = new SWLoginController();
+	$container = $sw_login_controller->sw_user_login();
+
+	if(isset($_SESSION["error_info"]))
+	{
+			header("Location: login_form.php");
+	}
+}
+
+if (isset($_SESSION["error_info"]))
+{
+	$error_info = $_SESSION["error_info"];
+	
+	if(isset($error_info["show_failure_message"]))
+	{
+		$show_failure_message = $error_info["show_failure_message"];
+	}
+	
+	if(isset($error_info["failure_message"]))
+	{
+		$failure_message = $error_info["failure_message"];
+	}
+	
+	unset($_SESSION["error_info"]);
 }
 
 ?>
@@ -42,66 +62,8 @@ if(isset($_SESSION["error_info"]))
 <link rel="stylesheet" href="css/sumoselect.css?v=3.0">
 <link rel="stylesheet" href="view.css?v=3.0">
 <script src="view.js"></script>
-<script src="calendar.js"></script>
 <script src="js/jquery.sumoselect.min.js?v=3.0"></script>
-<script>
 
-$(document).ready(function() {
-
-	$.fn.editable.defaults.mode = 'inline';
-	//Toggle search order div
-	$("#slide_div").click(function() {
-		$("#show_hide_div").slideToggle("slow");
-	});
-
-	// Toggle side menu
-	sidebarStatus = true;
-	$('#toggle_menu').click(function() {
-		if (sidebarStatus == false) {
-		  $('#sidebar_content').animate({
-			marginLeft: "0px",
-			opacity: "1"
-		  }, 1000);
-		  $('#page-wrapper').animate({
-			marginLeft: "250px",
-			opacity: "1"
-		  }, 1000);
-		  sidebarStatus = true;
-		}
-		else {
-		  $('#sidebar_content').animate({
-			marginLeft: "-250px",
-			opacity: "1"
-		  }, 1000);
-		  $('#page-wrapper').animate({
-			marginLeft: "0px",
-			opacity: "1"
-		  }, 1000);
-		  sidebarStatus = false;
-		}
-	});
-
-	// DateTime picker initialization
-	// $("#order_from_date").datetimepicker({
-		// format: "<?php echo ADMIN_DATE_TIME_FORMAT; ?>",
-		// step: 30,
-		// allowBlank: true,
-		// formatDate: 'd-m-Y',
-		// minDate: '01-01-2015',
-		// maxDate: '+01-01-1970',
-		// onSelectTime:function(ct,$i){
-			// $i.datetimepicker('hide');
-		// },
-		// onSelectDate:function(ct,$i){
-			// var selectedValue = $i.val();
-			// var splitedDate = selectedValue.split(" ");
-			// $i.val(splitedDate[0] + " 00:00");
-			// $i.datetimepicker('hide');
-		// }
-	// });
-});
-
-</script>
 </head>
 
 <body>

@@ -15,7 +15,7 @@
 		</li>		<li id="li_2" >
 		<label class="description" for="element_2">Date Of Discharge </label>
 		<div>
-			<input id="element_2" name="hospital_discharge_date" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input type="text" class="element text medium" id="hospital_discharge_date" name="hospital_discharge_date" readonly value="<?php echo date('d/m/Y')?>">
 		</div> 
 		</li>		<li id="li_3" >
 		<label class="description" for="element_3">Duration of Stay </label>

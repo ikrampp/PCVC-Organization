@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;background-color:#24778E;">
 	<div class="navbar-header" style="background-color:#000;width:250px">
-		<a class="navbar-brand" href="sw_dashboard.php" style="color:#fff">Vidiyal - Admin</a>
+		<a class="navbar-brand" href="sw_dashboard.php" style="color:#fff">Vidiyal - Dashboard</a>
 	</div>
 	<!-- /.navbar-header -->
 	<?php $admin_name = ((isset($_COOKIE) && (isset($_COOKIE['admin_name']))) ? $_COOKIE['admin_name'] : "Admin") ; ?>
@@ -18,8 +18,6 @@
 					<a href="sw_dashboard.php" style="color:#2F525B;font-weight:bold;font-size:14px;"><i class="fa fa-search" style="font-size:14px;color:#000;padding:0 10px"></i>Dashboard</a>
 				</li>
 				<li style="color:#337ab7;">
-					<a href="client_follow_up_form.php" style="color:#2F525B;font-weight:bold;font-size:14px"><i class="fa fa-th" style="font-size:14px;color:#000;padding:0 10px"></i>Hospital FollowUp</a>
-
 					<a href="client_intake_form.php" style="color:#2F525B;font-weight:bold;font-size:14px"><i class="fa fa-th" style="font-size:14px;color:#000;padding:0 10px"></i>Add Client</a>
 				</li>
                 <li style="color:#337ab7;">

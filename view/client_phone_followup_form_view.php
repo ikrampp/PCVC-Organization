@@ -15,12 +15,12 @@
 		</li>		<li id="li_2" >
 		<label class="description" for="phone_date">Phone Follow Up Date </label>
 		<div>
-			<input id="element_2" name="phone_date" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input type="text" class="element text medium" id="phone_date" name="phone_date" readonly value="<?php echo date('d/m/Y')?>">
 		</div> 
 		</li>		<li id="li_3" >
 		<label class="description" for="last_phone_date">Last Called Date </label>
 		<div>
-			<input id="element_3" name="last_phone_date" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input type="text" class="element text medium" id="last_phone_date" name="last_phone_date" readonly value="<?php echo date('d/m/Y')?>">
 		</div> 
 		</li>		<li id="li_4" >
 		<label class="description" for="conversation">Conversation Held With (Name & Relation) </label>
