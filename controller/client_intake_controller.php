@@ -19,7 +19,7 @@ class ClientIntakeController {
 
 		if($_SERVER["REQUEST_METHOD"] != "POST")
 		{
-			echo "Form details are not submitted properly.";
+			$error_message = "Form details are not submitted properly.";
 		}
 
 		if(isset($_POST['client_id']))
@@ -58,6 +58,19 @@ class ClientIntakeController {
 			$client_details->client_enrolled_by = $_POST['client_enrolled_by'];
 		}
 		
+		if(isset($_FILES) && isset($_FILES['client_burns_image']))
+		{
+			$file_container = $this->store_image_in_folder($client_details->client_id, $_FILES['client_burns_image']);
+			if(isset($file_container->file_name))
+			{
+				$client_form_details->uploaded_file_name = $file_container->file_name;
+			}
+			else
+			{
+				$error_message = $error_message . ' Image Burns file upload is failed';
+			}
+		} 
+		
 		$client_form_details->timestamp = date('Y-m-d');
 		$client_form_details->form_json_data	= json_encode($_POST);
 
@@ -85,7 +98,7 @@ class ClientIntakeController {
 			}
 			else
 			{
-				$error_info["failure_message"] = "Username or Password is Invalid";
+				$error_info["failure_message"] = "Invalid Operation";
 			}
 		}
 
@@ -244,7 +257,20 @@ class ClientIntakeController {
 		{
 			$client_details->client_enrolled_by = $_POST['client_enrolled_by'];
 		}
-		
+
+		if(isset($_FILES) && isset($_FILES['Hospital_Dischanrge_Images']))
+		{
+			$file_container = $this->store_image_in_folder($client_details->client_id, $_FILES['Hospital_Dischanrge_Images']);
+			if(isset($file_container->file_name))
+			{
+				$client_form_details->uploaded_file_name = $file_container->file_name;
+			}
+			else
+			{
+				$error_message = $error_message . ' Image Burns file upload is failed';
+			}
+		} 
+				
 		$client_form_details->timestamp = date('Y-m-d');
 		$client_form_details->form_json_data	= json_encode($_POST);
 
@@ -504,6 +530,33 @@ class ClientIntakeController {
 
 		$container->success = true;
 		return $container;
-	}	
+	}
+
+	public function store_image_in_folder($client_id, $image_container)
+	{
+		//Create a container object which will hold complete information required to display the complete order page
+		$container = new stdClass();
+		$time_now = time();
+		$file_name = basename($image_container['name']);
+		$ext = pathinfo($file_name, PATHINFO_EXTENSION);
+		$file_name_without_ext = basename($image_container['name'], $ext);
+		$target_dir	=	'images/' . $client_id;
+
+		if (!file_exists($target_dir)) {
+			mkdir($target_dir, 0777, true);
+		}
+
+		$target_file = $target_dir . '/' . $file_name_without_ext . '_' . $time_now . '.' . $ext;
+		$container->file_name = $target_file;
+		
+		if (move_uploaded_file($image_container["tmp_name"], $target_file)) {
+			$container->success_message = "The file ". $file_name. " has been uploaded.";
+			$container->success = true;
+		} else {
+			$container->error_message = "Sorry, there was an error uploading your file.";
+		}
+		
+		return $container;
+	}		
 }
 ?>
